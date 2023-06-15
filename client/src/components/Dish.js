@@ -9,6 +9,13 @@ export default function Dish({ dish }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  function addtocart()
+  {
+
+
+
+  }
+
   return (
     <div className='shadow-1g p-3 mb-5 bg-white rounded'>
       <div onClick={handleShow}>
@@ -49,7 +56,7 @@ export default function Dish({ dish }) {
           <h1 className='mt-1'>Preis: {dish.prices[0][varient] * quantity}€</h1>
         </div>
         <div className='m-1 w-100'>
-          <button className="btn btn-primary">IN DEN WARENKORB LEGEN</button>
+          <button className="btn btn-primary" onClick={addtocart}>Warenkorb +</button>
         </div>
       </div>
 

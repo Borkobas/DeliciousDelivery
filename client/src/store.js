@@ -3,10 +3,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { getAllDishesReducer } from './reducers/dishReducers';
+import { cartReducer } from './reducers/cartReducers'
+
 
 const rootReducer = combineReducers({
   getAllDishesReducer: getAllDishesReducer,
-  // Add other reducers here if needed
+  cartReducer : cartReducer
 });
 
 const initialState = {};
