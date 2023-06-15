@@ -10,11 +10,7 @@ export default function Dish({ dish }) {
   const handleShow = () => setShow(true);
 
   return (
-<<<<<<< HEAD
-    <div style={{ margin: '70px', border: '1px solid black' }} className='shadow-1g p-3 mb-5 bg-white rounded'>
-=======
     <div className='shadow-1g p-3 mb-5 bg-white rounded'>
->>>>>>> merge_zadnjica
       <div onClick={handleShow}>
         <h1>{dish.name}</h1>
         <img src={dish.image} className="img-fluid" style={{ height: '200px', width: '200px' }} />

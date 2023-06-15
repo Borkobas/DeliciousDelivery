@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import Dish from '../components/Dish'
-import dishes from '../dishesdata'
-export default function Homescreen() {
-return (
-<div> 
-    
-    <div className="row">
-{dishes.map(dish=>{
-return <div className="col-md-4">
-<div>
-<Dish dish={dish}/>
-</div>
-</div>
-})}
-</div>
-</div>
-)
-}
-=======
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllDishes } from '../actions/dishActions';
@@ -54,4 +33,3 @@ export default function Homescreen() {
     </Fragment>
   );
 }
->>>>>>> merge_zadnjica
