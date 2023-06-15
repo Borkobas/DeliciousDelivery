@@ -8,7 +8,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Server is running!');
 });
-
+/*test*/
 app.get('/getdishes', async (req, res) => {
   try {
     const docs = await Dish.find({});
