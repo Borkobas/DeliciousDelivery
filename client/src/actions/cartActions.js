@@ -16,3 +16,4 @@ export const addToCart=(dish , quantity , varient)=>dispatch=>{
     dispatch({type: 'ADD _TO_CART' , payload : cartItem})
 
 }
+
