@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
-
+import {useDispatch , useSelector} from 'react-redux'
+import { addToCart } from "../actions/cartActions";
 export default function Dish({ dish }) {
   const [quantity, setQuantity] = useState(1);
   const [varient, setVarient] = useState('big');
@@ -9,10 +10,11 @@ export default function Dish({ dish }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const dispatch = useDispatch ()
   function addtocart()
   {
-
-
+ 
+    dispatch(addToCart (dish , quantity , varient))
 
   }
 
