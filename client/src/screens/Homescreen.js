@@ -17,13 +17,13 @@ export default function Homescreen() {
     <Fragment>
       <div className="row justify-content-center">
         {loading ? (
-          <h1>Laden</h1>
+          <h1 className="loading-text">Laden</h1>
         ) : error ? (
-          <h1>Etwas ist schief gelaufen</h1>
+          <h1 className="error-text">Etwas ist schief gelaufen</h1>
         ) : (
           dishes.map((dish) => (
             <div className="col-md-3 m-3" key={dish._id}>
-              <div>
+              <div className="dish-container">
                 <Dish dish={dish}/>
               </div>
             </div>

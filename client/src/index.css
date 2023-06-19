@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,25 +16,85 @@ code {
 }
 
 .nav-link {
-color: black !important;
-}
-
-.navbar-brand{
   color: black !important;
 }
 
-h1{
-   font-size: 20px !important;
+.navbar-brand {
+  color: black !important;
 }
-.flex-container{
+
+h1 {
+  font-size: 20px !important;
+}
+
+.flex-container {
   display: flex !important;
 }
-.btn{
-background-color: green !important;
-color: white !important;
+
+.btn {
+  background-color: green !important;
+  color: white !important;
 }
 
 select {
-box-shadow: none !important;
-border-color: black !important;
-  }
+  box-shadow: none !important;
+  border-color: black !important;
+}
+
+.product-container {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.fa-trash {
+  color: rgb(194, 99, 99) !important;
+  margin: 5px;
+  font-weight: bold;
+}
+
+/*Homescreen */
+.row.justify-content-center {
+  display: flex;
+  justify-content: center;
+}
+
+.col-md-3.m-3 {
+  margin: 1rem;
+}
+
+/* Cartscreen */
+.cart-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.cart-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.cart-image {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 1rem;
+}
