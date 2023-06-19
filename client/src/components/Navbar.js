@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg shadow p-3 mb-5 bg-white rounded">
-        <a className="navbar-brand" href="/">Boris Express</a>
+        <a className="navbar-brand" href="/">Delicious Delivery</a>
         <button
           className="navbar-toggler"
           type="button"

@@ -1,19 +1,40 @@
-import { getState } from 'redux-thunk';
-
-export const addToCart = (dish, quantity, varient) => (dispatch, getState) => {
-  var cartItem = {
-    name: dish.name,
-    _id: dish._id,
-    image: dish.image,
-    varient: varient,
+export const addToCart = (item, quantity, variant) => (dispatch, getState) => {
+  const cartItem = {
+    name: item.name,
+    _id: item._id,
+    image: item.image,
+    variant: variant,
     quantity: quantity,
-    prices: dish.prices,
-    price: dish.prices[0][varient] * quantity,
+    prices: item.prices,
+    price: item.prices[0][variant] * quantity,
   };
 
   dispatch({ type: 'ADD_TO_CART', payload: cartItem });
 
   const cartItems = getState().cartReducer.cartItems;
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
+};
 
+export const removeFromCart = (item, quantity, variant) => (dispatch, getState) => {
+  const cartItem = {
+    name: item.name,
+    _id: item._id,
+    image: item.image,
+    variant: variant,
+    quantity: quantity,
+    prices: item.prices,
+    price: item.prices[0][variant] * quantity,
+  };
+
+  dispatch({ type: 'REMOVE_FROM_CART', payload: cartItem });
+
+  const cartItems = getState().cartReducer.cartItems;
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+};
+
+export const deleteFromCart = (item) => (dispatch, getState) => {
+  dispatch({ type: 'DELETE_FROM_CART', payload: item });
+
+  const cartItems = getState().cartReducer.cartItems;
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
 };
