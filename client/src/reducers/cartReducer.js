@@ -1,14 +1,17 @@
 export const cartReducer = (state = { cartItems: [] }, action) => {
     switch (action.type) {
       case 'ADD_TO_CART':
-        const existingCartItem = state.cartItems.find((item) => item._id === action.payload._id);
+        const existingCartItemIndex = state.cartItems.findIndex((item) => item._id === action.payload._id);
   
-        if (existingCartItem) {
+        if (existingCartItemIndex !== -1) {
+          const updatedCartItems = [...state.cartItems];
+          const existingCartItem = updatedCartItems[existingCartItemIndex];
+          existingCartItem.quantity += action.payload.quantity;
+          existingCartItem.price += action.payload.price;
+  
           return {
             ...state,
-            cartItems: state.cartItems.map((item) =>
-              item._id === action.payload._id ? action.payload : item
-            ),
+            cartItems: updatedCartItems,
           };
         } else {
           return {

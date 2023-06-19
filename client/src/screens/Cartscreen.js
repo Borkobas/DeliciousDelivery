@@ -9,19 +9,28 @@ export default function Cartscreen() {
 
   const handleAddToCart = (item) => {
     console.log('Adding item to cart:', item);
-    dispatch(addToCart(item, item.quantity + 1, item.variant));
+    dispatch(addToCart(item, 1, item.variant));
   };
 
   const handleRemoveFromCart = (item) => {
     if (item.quantity > 1) {
       console.log('Removing item from cart:', item);
-      dispatch(removeFromCart(item, item.quantity - 1, item.variant));
+      dispatch(removeFromCart(item, 1, item.variant));
     }
   };
 
   const handleDeleteFromCart = (item) => {
     console.log('Deleting item from cart:', item);
     dispatch(deleteFromCart(item));
+  };
+
+  // Calculate the total sum in the cart
+  const calculateTotalSum = () => {
+    let sum = 0;
+    for (const item of cartItems) {
+      sum += item.price;
+    }
+    return sum;
   };
 
   return (
@@ -38,7 +47,7 @@ export default function Cartscreen() {
               <h1 className="item-title">{item.name}</h1>
               <p className="item-variant">{item.variant}</p>
               <p className="item-price">
-                Price: {item.quantity} * {item.prices[0][item.variant]} = {item.price}
+                Price: {item.quantity} * {item.prices && item.prices[item.variant] && item.prices[item.variant][0]} = {item.price}
               </p>
               <div className="quantity-controls">
                 <button className="quantity-btn" onClick={() => handleRemoveFromCart(item)}>
@@ -56,6 +65,10 @@ export default function Cartscreen() {
           </div>
         ))}
       </div>
+
+      <div className="total-sum">Total Sum: {calculateTotalSum()}</div>
+      
+
 
       <style jsx>{`
         .cart-container {
@@ -101,6 +114,7 @@ export default function Cartscreen() {
 
         .item-variant,
         .item-price {
+          font-size: 14px;
           margin: 0;
         }
 
@@ -108,29 +122,28 @@ export default function Cartscreen() {
           display: flex;
           align-items: center;
           gap: 0.5rem;
+          margin-top: 0.5rem;
         }
 
         .quantity-btn {
-          background: none;
           border: none;
+          background: none;
           cursor: pointer;
         }
 
         .quantity-text {
+          font-size: 14px;
           font-weight: bold;
         }
 
         .delete-btn {
-          background: none;
           border: none;
+          background: none;
           cursor: pointer;
-          color: rgb(194, 99, 99);
-          margin: 5px;
-          font-weight: bold;
+          color: red;
         }
       `}</style>
     </div>
   );
 }
 
-         

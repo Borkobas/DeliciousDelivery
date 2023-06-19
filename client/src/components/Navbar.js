@@ -1,11 +1,24 @@
 import React from 'react';
-import {useSelector , useDispatch} from 'react-redux';
+import { useSelector } from 'react-redux';
+
 export default function Navbar() {
-  const cartstate = useSelector(state=>state.cartReducer)
+  const cartItems = useSelector((state) => state.cartReducer.cartItems);
+
+  // Calculate the total number of items in the cart
+  const getTotalItemsCount = () => {
+    let totalCount = 0;
+    cartItems.forEach((item) => {
+      totalCount += item.quantity;
+    });
+    return totalCount;
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg shadow p-3 mb-5 bg-white rounded">
-        <a className="navbar-brand" href="/">Delicious Delivery</a>
+        <a className="navbar-brand" href="/">
+          Delicious Delivery
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -20,10 +33,13 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/login">Einloggen</a>
+              <a className="nav-link" href="/login">
+                Einloggen
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/cart">Warenkorb {cartstate.cartItems.length}
+              <a className="nav-link" href="/cart">
+                Warenkorb ({getTotalItemsCount()})
               </a>
             </li>
           </ul>
