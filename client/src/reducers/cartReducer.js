@@ -20,13 +20,22 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
           };
         }
   
-      case 'REMOVE_FROM_CART':
-        return {
-          ...state,
-          cartItems: state.cartItems.map((item) =>
-            item._id === action.payload._id ? action.payload : item
-          ),
-        };
+        case 'REMOVE_FROM_CART':
+          const updatedCartItems = state.cartItems.map((item) => {
+            if (item._id === action.payload._id) {
+              const updatedItem = { ...item };
+              updatedItem.quantity -= action.payload.quantity;
+              updatedItem.price -= action.payload.price;
+              return updatedItem;
+            }
+            return item;
+          });
+        
+          return {
+            ...state,
+            cartItems: updatedCartItems,
+          };
+        
   
       case 'DELETE_FROM_CART':
         return {

@@ -25,27 +25,27 @@ export const getDishById=(dishid)=>async dispatch=>{
 
 }
 
-export const filterDishes=(searchkey , category)=>async dispatch=>{
-
-
-  dispatch({type:'GET_DISHES_REQUEST'})
+export const filterDishes = (searchkey, category) => async (dispatch) => {
+  dispatch({ type: 'GET_DISHES_REQUEST' });
 
   try {
-      var filteredDishes ;
-      const response = await axios.get('/api/dishes/getalldishs')
-      filteredDishes = response.data.filter(dish=>dish.name.toLowerCase().includes(searchkey))
-       
-      if(category!='all')
-      {
-          filteredDishes = response.data.filter(dish=>dish.category.toLowerCase()==category)
+    const response = await axios.get('/getdishes');
+    let filteredDishes = response.data.filter((dish) =>
+      dish.name.toLowerCase().includes(searchkey.toLowerCase())
+    );
 
-      }
-      dispatch({type:'GET_DISHES_SUCCESS' , payload : filteredDishes})
+    if (category !== 'all') {
+      filteredDishes = filteredDishes.filter(
+        (dish) => dish.category.toLowerCase() === category.toLowerCase()
+      );
+    }
+
+    dispatch({ type: 'GET_DISHES_SUCCESS', payload: filteredDishes });
   } catch (error) {
-      dispatch({type:'GET_DISHES_FAILED' , payload : error})
+    dispatch({ type: 'GET_DISHES_FAILED', payload: error });
   }
+};
 
-}
 
 export const addDish=(dish)=>async dispatch=>{
   dispatch({type:'ADD_DISH_REQUEST'})
