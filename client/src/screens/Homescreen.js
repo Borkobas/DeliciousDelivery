@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllDishes } from '../actions/dishActions';
-
+import Filter from "../components/Filter";
 import Dish from '../components/Dish';
 
 export default function Homescreen() {
@@ -15,6 +15,7 @@ export default function Homescreen() {
 
   return (
     <Fragment>
+       <Filter/>
       <div className="row justify-content-center">
         {loading ? (
           <h1 className="loading-text">Laden</h1>
