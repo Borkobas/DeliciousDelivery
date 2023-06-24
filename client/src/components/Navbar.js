@@ -13,6 +13,12 @@ export default function Navbar() {
     return totalCount;
   };
 
+  // Handle click event for Admin Panel
+  const handleAdminPanelClick = () => {
+    // Redirect or navigate to the AdminScreen
+    window.location.href = '/admin';
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg shadow p-3 mb-5 bg-white rounded">
@@ -33,8 +39,8 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/login">
-                Einloggen
+              <a className="nav-link" onClick={handleAdminPanelClick}>
+                Admin Panel
               </a>
             </li>
             <li className="nav-item">
